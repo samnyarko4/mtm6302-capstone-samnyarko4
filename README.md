@@ -1,7 +1,1 @@
-# Capstone project
-
-Name: Samuel Nyarko
-
-Student #: 040-946-466
-
-Project:Pokedex
+For my pokedex design I decided to keep the design simple and easy for the user to find the Pokémon they are looking for. The main nav that is displayed on each page has a search bar, a Pokémon grid view to quickly scroll through Pokémon’s, and a Pokémon filter by type option. On each Pokémon page you will be greeted with a photo and name of the Pokémon, the element type of the Pokémon, the stats of the Pokémon. On the Pokémon grid view you will be able to quickly scroll through the Pokémon.
