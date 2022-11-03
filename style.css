@@ -1,6 +1,5 @@
 body{
-    background:#efefbb;
-    background: linear-gradient(to right, #d4d3dd, #efefbb);
+    background :linear-gradient(360deg, #333 0%, #000 100%);;
     display: flex;
     flex-direction: column;
     align-items: center;
