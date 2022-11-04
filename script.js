@@ -21,6 +21,8 @@ const main_types = Object.keys(colors);
 
 
 
+
+
 const fetchPokemons = async () => {
     for(let i = 1; i<= pokemon_count; i++){
         await getPokemon(i);
@@ -36,6 +38,8 @@ const getPokemon = async (id) => {
 
 fetchPokemons();
 
+
+
 const createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div')
     pokemonEl.classList.add('pokemon')
@@ -48,18 +52,30 @@ const createPokemonCard = (pokemon) => {
 
     const pokemonInnerHTML = 
     `
+    <button id="card-btn${pokemon.id}">
     <div class="img-container">
-    <img src="https://pokeres.bastionbot.org/images/pokemon/{${pokemon.id1} }.png">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
  </div>
  <div
  class="info">
      <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
      <h3 class="name">${name}</h3>
      <small class="type">Type: <span>${type}</span></small>
- </div> `
+ </div> 
+ </button>`
  
 
  pokemonEl.innerHTML = pokemonInnerHTML
 
  poke_container.appendChild(pokemonEl)
-}
+
+ const $btn1 = document.getElementById('card-btn1')
+$btn1.addEventListener('click', function () {
+    location.href = "bulbaseaur.html";  
+});
+
+
+};
+
+
+

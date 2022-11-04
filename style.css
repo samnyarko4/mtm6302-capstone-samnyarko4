@@ -52,3 +52,17 @@ h1{
 .pokemon .info .name{
 margin: 15px 0 7px;
 }
+
+.card-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.card-btn :hover{
+
+cursor: pointer;
+}
+
+.fires{
+    background-color: firebrick;
+}
