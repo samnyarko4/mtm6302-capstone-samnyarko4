@@ -1,5 +1,6 @@
 const poke_container = document.getElementById('poke-container')
-const pokemon_count = 25
+let pokemon_count = 25
+let more_poke = 25
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -75,7 +76,26 @@ $btn1.addEventListener('click', function () {
 });
 
 
+
 };
 
+const $load_more = document.getElementById('load-more')
+$load_more.addEventListener('click', function(){
+    pokemon_count += more_poke
 
+    const fetchPokemons = async () => {
+        for(let i = 26; i<= pokemon_count; i++){
+            await getPokemon(i);
+        }
+    }
+    
+    const getPokemon = async (id) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+        const res = await fetch(url)
+        const pokemon = await res.json()
+        createPokemonCard(pokemon)
+    }
+    
+    fetchPokemons();
+})
 
