@@ -67,83 +67,67 @@ cursor: pointer;
 }
 
 /* Page two */
-
-
-.logo img{
-    height: 60px;
-    padding-left: 40rem;
+.fires{
+    display: flex;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(47,57,48,1) 0%, rgba(93,254,104,1) 71%, rgba(131,251,139,1) 98%);
+}
+.container{
+    display: grid;
+    width: 100%;
+ 
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 15% 40rem 15%;
+    grid-template-areas: ". nav ."
+                         "left stats right";
 }
 
-.fires{
-    background: linear-gradient(90deg, rgba(47,57,48,1) 0%, rgba(93,254,104,1) 71%, rgba(131,251,139,1) 98%);
+.logo2{
+   grid-area: nav;
+}
+.logo2 img{
+    height: 100px;
+}
 
-    
- 
+.rightarrow{
+    grid-area: right;
+    margin: auto;
+}
+
+.leftarrow{
+    grid-area: left;
+    margin: auto;
 }
 
 .pokemon-full{
-    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "info picture"
+                         ". .";
+    grid-area: stats;
 }
 
-
-#leftarrow{
- position: absolute;
- top: 400px;
-}
-
-.num-id,
-.poke-name,
-.full-type{
-    margin: 0px 10px 0px 180px;
-  
-}
+.pokemon-container
 
 .poke-info h4{
-    margin: auto ;
-    padding: 0 0 0 1000px;
     font-size: 60px;
     color: white;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+    grid-area: info;
 }
-
-
-
 .num-id{
     font-size: 250px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bolder;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.5);;
-    overflow-x: hidden;
-
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
 }
 
-.poke-name{
-    font-size: 80px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bolder;
-    color: white;
-}
-
-.full-type{
-    font-size: 30px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-
-}
-
-.pokemon-img{
-    height: 500px;
-    position: absolute;
-    right: 0px;
-    top: 5px;
-    overflow-x: hidden;
-}
-
-.attributes{
+.pokemon-img {
     margin: auto;
-    padding-left: 180px;
-    color: white;
+    height: 500px;
+    grid-area: picture;
 }
