@@ -99,23 +99,37 @@ cursor: pointer;
     margin: auto;
 }
 
+.btnarrows{
+    background: none;
+    border: none;
+}
+
+.btnarrows:hover{
+    color: whitesmoke;
+}
+
 .pokemon-full{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
     grid-template-areas: "info picture"
-                         ". .";
+                         ". statsgrid";
     grid-area: stats;
 }
 
-.pokemon-container
 
-.poke-info h4{
+
+.poke-info{
+    grid-area: info;
+}
+
+.rightside h4{
+    margin-top: 0;
     font-size: 60px;
     color: white;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    grid-area: info;
+    
 }
 .num-id{
     font-size: 250px;
@@ -130,4 +144,45 @@ cursor: pointer;
     margin: auto;
     height: 500px;
     grid-area: picture;
+}
+
+.poke-name{
+    font-size: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    color: white;
+    margin: 0;
+}
+
+.full-type{
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.attributes{
+    margin: auto;
+    color: white;
+}
+.attributes tr td{
+    padding: 0px 150px 5px 0px;
+}
+.rightside{
+    grid-area: statsgrid;
+    
+}
+.types{
+    margin-left: 100px;
+}
+
+.types h5{
+    margin-top: 200px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.typesymbol{
+    height: 100px;
 }
