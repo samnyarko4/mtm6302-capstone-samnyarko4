@@ -1,5 +1,4 @@
-body{
-    background :linear-gradient(360deg, #333 0%, #000 100%);;
+.main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +8,10 @@ body{
 
 h1{
     letter-spacing: 3px;
+}
+
+.main{
+    background :linear-gradient(360deg, #333 0%, #000 100%);;
 }
 
 .poke-container {
@@ -63,6 +66,51 @@ margin: 15px 0 7px;
 cursor: pointer;
 }
 
+/* Page two */
+
 .fires{
     background-color: firebrick;
+    display: flexbox;
+    position: relativeS;
+}
+
+.pokemon-full{
+    display: grid;
+}
+
+
+#leftarrow{
+ 
+}
+
+
+
+.num-id{
+    font-size: 150px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    color: rgba(255, 255, 255, 0.5);;
+    margin-top: 0%;
+
+}
+
+.poke-name{
+    font-size: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    color: white;
+}
+
+.full-type{
+    font-size: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+
+}
+
+.pokemon-img{
+    height: 900px;
+    position: absolute;
+    right: 100px;
+    top: 30px;
 }

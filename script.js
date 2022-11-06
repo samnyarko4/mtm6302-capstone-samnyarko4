@@ -81,10 +81,10 @@ $btn1.addEventListener('click', function () {
 
 const $load_more = document.getElementById('load-more')
 $load_more.addEventListener('click', function(){
-    pokemon_count += more_poke
+    pokemon_count = 50
 
     const fetchPokemons = async () => {
-        for(let i = 26; i<= pokemon_count; i++){
+        for(let i = 1; i<= pokemon_count; i++){
             await getPokemon(i);
         }
     }
