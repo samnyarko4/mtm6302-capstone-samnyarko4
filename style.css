@@ -56,13 +56,12 @@ h1{
 margin: 15px 0 7px;
 }
 
-.card-btn{
-    background-color: transparent;
+#card-btn {
+    background-color: none;
     border: none;
 }
 
-.card-btn :hover{
-
+#card-btn :hover{
 cursor: pointer;
 }
 
@@ -125,6 +124,10 @@ cursor: pointer;
 }
 
 .tablet{
+    display: none;
+}
+
+.mobile{
     display: none;
 }
 
@@ -322,6 +325,9 @@ cursor: pointer;
 }
 
 @media only screen and  (max-width: 606px) {
+    .mobile{
+        display: block;
+    }
     .logo2{
         margin-left: 0px;
         display: flex;
