@@ -67,6 +67,19 @@ cursor: pointer;
 }
 
 /* Page two */
+
+.square{
+    display: none;
+    height: 500px;
+  width: 900px;
+  background-color: #555;
+  position: absolute;
+  left: 150px;
+  top: 130px;
+}
+.show{
+    display: block;
+}
 .fires{
     display: flex;
     height: 100%;
@@ -82,11 +95,37 @@ cursor: pointer;
                          "left stats right";
 }
 
+.poke-menu{
+    padding: 0px 0px 0px 0px;
+    background: none;
+    border: none;
+    position: relative;
+    bottom: 20px;
+}
+.poke-menu:hover{
+    cursor: pointer;
+}
+
+.poke-menu button{
+    margin-bottom: 100px;
+    
+}
+
 .logo2{
    grid-area: nav;
+  margin-left: 300px;
 }
 .logo2 img{
-    height: 100px;
+    height: 80px;
+
+}
+
+.nav-container{
+    align-content: center;
+}
+
+.tablet{
+    display: none;
 }
 
 .rightarrow{
@@ -124,7 +163,8 @@ cursor: pointer;
 }
 
 .rightside h4{
-    margin-top: 0;
+    margin-top: 30px;
+    margin-bottom: 40px;
     font-size: 60px;
     color: white;
     font-weight: 600;
@@ -144,6 +184,19 @@ cursor: pointer;
     margin: auto;
     height: 500px;
     grid-area: picture;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+}
+
+.bounce-1 {
+    animation-name: bounce-1;
+    animation-timing-function: linear;
+}
+@keyframes bounce-1 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
 }
 
 .poke-name{
@@ -164,6 +217,7 @@ cursor: pointer;
 .attributes{
     margin: auto;
     color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .attributes tr td{
     padding: 0px 150px 5px 0px;
@@ -177,12 +231,177 @@ cursor: pointer;
 }
 
 .types h5{
-    margin-top: 200px;
-    font-size: 25px;
+    margin-top: 230px;
+    margin-bottom: 25px;
+    font-size: 45px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
 }
 
 .typesymbol{
     height: 100px;
+}
+
+.attribute-chart{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 400px;
+}
+.stat-title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 25px;
+    margin: 15px;
+}
+.stats-number{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 25px;
+    margin: 15px;
+}
+
+/* TABLET MEADIA QUERIES */
+
+@media only screen and (min-width:607px) and (max-width: 1024px) {
+    .logo2{
+        margin-left:200px;
+    }
+
+    .desktop{
+        display: none;
+    }
+    .tablet{
+        display: block;
+    }
+    
+    .num-id{
+    font-size: 150px;
+    }
+
+    .poke-name{
+        font-size: 60px;
+    }
+
+    .full-type{
+        font-size: 20px;
+    }
+
+    .attributes tr td{
+        padding: 0px 90px 5px 0px;
+    }
+
+    .pokemon-img {
+        height: 400px;
+    }
+
+    .types{
+        margin-left: 60px;
+    }
+
+    .types h5{
+        margin-top: 100px;
+
+    }
+
+    .rightside h4{
+        font-size: 40px;
+        margin: 70px 0px 10px 0px;
+    }
+
+    .attribute-chart{
+        column-gap: 150px;
+    }
+
+    .stat-title{
+        font-size: 18px;
+    }
+
+    .stats-number{
+        font-size: 20px;
+    }
+}
+
+@media only screen and  (max-width: 606px) {
+    .logo2{
+        margin-left: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pokemon-full{
+        grid-template-areas: "info picture"
+        "types types"
+        "statsgrid statsgrid";
+       grid-template-rows: 1fr 1fr 1fr; 
+    }
+
+   
+
+    .desktop{
+        display: none;
+    }
+    .tablet{
+        display: none;
+    }
+    
+    .num-id{
+    font-size: 80px;
+    }
+
+    .poke-name{
+        font-size: 35px;
+    }
+
+    .full-type{
+        font-size: 18px;
+    }
+
+    .attributes tr td{
+        padding: 0px 40px 5px 0px;
+    }
+
+    .pokemon-img {
+        height: 250px;
+    }
+    .types{
+        margin-left: 25px;
+       grid-area: types;
+    }
+
+    .types h5{
+        font-size: 25px;
+        margin-top: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .typesymbol{
+        height: 80px;
+        
+    }
+
+
+
+    .rightside h4{
+        font-size: 30px;
+        margin: 70px 0px 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .attribute-chart{
+        column-gap: 150px;
+    }
+
+    .stat-title{
+        font-size: 18px;
+    }
+
+    .stats-number{
+        font-size: 20px;
+    }
 }

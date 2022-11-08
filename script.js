@@ -1,6 +1,6 @@
 const poke_container = document.getElementById('poke-container')
 let pokemon_count = 25
-let more_poke = 25
+let more_poke = -25 + 2
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -81,7 +81,7 @@ $btn1.addEventListener('click', function () {
 
 const $load_more = document.getElementById('load-more')
 $load_more.addEventListener('click', function(){
-    pokemon_count = 50
+    pokemon_count += more_poke
 
     const fetchPokemons = async () => {
         for(let i = 1; i<= pokemon_count; i++){
@@ -99,3 +99,7 @@ $load_more.addEventListener('click', function(){
     fetchPokemons();
 })
 
+
+function myFunction() {
+    document.getElementById("square").classList.toggle("show");
+  }
