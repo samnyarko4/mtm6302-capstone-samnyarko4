@@ -45,8 +45,11 @@ const createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div')
     pokemonEl.classList.add('pokemon')
     const poke_types = pokemon.types.map(el => el.type.name);
+
     const type = main_types.find(type => poke_types.indexOf(type) > -1);
+
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+
     const color = colors[type];
 
     pokemonEl.style.backgroundColor = color
@@ -71,6 +74,7 @@ const createPokemonCard = (pokemon) => {
  poke_container.appendChild(pokemonEl)
 
  const $btn1 = document.getElementById('card-btn')
+
 $btn1.addEventListener('click', function () {
     location.href = "bulbaseaur.html";  
 });
@@ -79,17 +83,20 @@ $btn1.addEventListener('click', function () {
 
 };
 
+let more = ++1
+
 const $load_more = document.getElementById('load-more')
 $load_more.addEventListener('click', function(){
-    let r = 26
     const fetchPokemons = async () => {
-        for(let i = 1; i <= r; i++){
+        for(let i = 1; i <= 25; i++){
             await getPokemon(i);
         }
     }
     
     const getPokemon = async (id) => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+        
+        
+        const url = `https://pokeapi.co/api/v2/pokemon/${id} + ${more}`
         const res = await fetch(url)
         const pokemon = await res.json()
         createPokemonCard(pokemon)
