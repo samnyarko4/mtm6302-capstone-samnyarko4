@@ -90,6 +90,8 @@ $btn.addEventListener('click', function() {
     location.href = "bulbaseaur.html"; 
    });
 
+  
+
  
 };
 
