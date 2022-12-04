@@ -66,14 +66,16 @@ const displayPopup = (pokemon) => {
     <div id="pokeBg" class="popup">
     <div class="container">
     <button id="close">
-    <i class="fa-solid fa-xmark fa-6x"></i>
+    <i class="fa-solid fa-xmark fa-6x desktop"></i>
+    <i class="fa-solid fa-xmark fa-4x mobile"></i>
     </button>
     <nav class="logo2">
     
         <div class="nav-container">
 
             <button onclick="myFunction()" id="poke-menu" class="poke-menu dropbtn">
-                <i class="fa-brands fa-microsoft fa-4x"></i>
+                <i class="fa-brands fa-microsoft fa-4x desktop"></i>
+                <i class="fa-brands fa-microsoft fa-3x mobile"></i>
             </button>
             <a class="logo" href="index.html">
                 <img   href="index.html" src="/images/pokedex.png" alt="">
@@ -88,9 +90,7 @@ const displayPopup = (pokemon) => {
     </div>
             <!-- Front and back arrows -->
         <span class="leftarrow">
-            <a href="ivysaur.html">
-
-                <button  class="btnarrows desktop">
+                <button  class="btnarrows desktop" >
                     <i id="leftarrow"class="fa-solid fa-chevron-left fa-8x "></i>
                 </button>
                 <button class="btnarrows tablet">
@@ -99,12 +99,9 @@ const displayPopup = (pokemon) => {
                 <button class="btnarrows mobile">
                     <i id="leftarrow"class="fa-solid fa-chevron-left fa-4x "></i>
                 </button>
-            </a>
             </span>
             
             <span class="rightarrow">
-                <a href="">
-
                     <button class="btnarrows desktop">
                         <i id="rightarrow"class="fa-solid fa-chevron-right fa-8x "></i>
                     </button>
@@ -114,7 +111,6 @@ const displayPopup = (pokemon) => {
                     <button class="btnarrows mobile">
                         <i id="rightarrow"class="fa-solid fa-chevron-right fa-4x"></i>
                     </button>
-                </a>
                 </span>
 
         <!-- Pokemon information -->
@@ -189,12 +185,20 @@ const displayPopup = (pokemon) => {
     $main.innerHTML = htmlString + $main.innerHTML ;
  
     
+    $main.classList.add('hide');
+
+
     const $close = document.getElementById('close');
 
 $close.addEventListener('click', function (){
     const popup = document.querySelector('.popup');
     popup.parentElement.removeChild(popup);
+
+    $main.classList.remove('hide');
+
 });
+
+
 
 const popbg = document.getElementById('pokeBg')
 
@@ -202,10 +206,19 @@ const popbg = document.getElementById('pokeBg')
 
 const color = colors[type];
 
-popbg.style.backgroundColor = linearGradient(color,black)
+popbg.style.backgroundColor = color
 
+
+
+
+const $leftarrow = document.getElementsByClassName('fa-chevron-left')
+    
+$leftarrow.addEventListener('click', function (){
+    for(let i=0; i < $leftarrow.length; i++){
+        console.log('hello');
+    }
+   })
 };
-
 
 
 const createPokemonCard = (pokemon) => {
@@ -241,7 +254,7 @@ const createPokemonCard = (pokemon) => {
      </div> 
      </button>
      <div class="status">
-     <button id="caught">Caught</button>
+     <button class="caught" id="caught">Caught</button>
      </div>
      `
  
@@ -255,10 +268,15 @@ const createPokemonCard = (pokemon) => {
 
  poke_container.appendChild(pokemonEl);
 
-  
+ pokemonEl.addEventListener('click', function (e) {
+    if (e.target.classList.contains('caught')){
+        console.log('hello')
+    }
+ })
 
  
 };
+
 
 
 

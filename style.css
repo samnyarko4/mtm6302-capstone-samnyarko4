@@ -13,7 +13,12 @@ h1{
 #main{
     background: #3F3F3F;
     background-image: url("/images/pokedexbg.png");
+    background-size:contain;
+background-position:center;
+}
 
+.hide{
+    overflow: hidden;
 }
 
 .poke-container {
@@ -141,6 +146,9 @@ margin: 15px 0 7px;
     height: 100vh;
     width: 100vw;
     background-color: #000;
+}
+#pokeBg{
+    overflow: hidden;
 }
 
 .square{
@@ -419,6 +427,8 @@ margin: 15px 0 7px;
     }
 }
 
+/*mobile screen*/
+
 @media only screen and  (max-width: 606px) {
     .square{
         width: 400px;
@@ -431,6 +441,20 @@ margin: 15px 0 7px;
     .mobile{
         display: block;
     }
+
+
+    .logo2 img{
+        height: 50px;
+    }
+
+    .fa-xmark .fa-6x .desktop{
+        display: none;
+    }
+
+    .fa-microsoft .fa-4x .desktop{
+        display: none;
+    }
+    
     .logo2{
         margin-left: 0px;
         display: flex;
