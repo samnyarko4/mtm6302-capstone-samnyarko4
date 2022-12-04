@@ -271,6 +271,7 @@ const createPokemonCard = (pokemon) => {
  pokemonEl.addEventListener('click', function (e) {
     if (e.target.classList.contains('caught')){
         console.log('hello')
+        
     }
  })
 
