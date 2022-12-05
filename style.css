@@ -30,13 +30,17 @@ background-position:center;
     max-width: 1200px;
 }
 
+
 .pokemon{
-    background-color: #eee;
+    background-color: #3F3F3F;
+    color: whitesmoke;
     border-radius: 10px;
     box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
     margin: 10px;
     padding: 20px;
     text-align: center;
+    border: 2px solid;
+    box-shadow: 0 0 10px 0 #000 inset;
 }
 
 .pokemon .img-container{
@@ -51,6 +55,7 @@ background-position:center;
     max-width: 90%;
     margin-top: 20px;
 }
+
 
 .pokemon .info .number{
     background-color: rgba(0, 0, 0, 0.1);
@@ -136,6 +141,14 @@ margin: 15px 0 7px;
 .button-30:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+.fa-solid .fa-xmark .fa-4x .mobile{
+    display: none;
+}
+
+.fa-brands .fa-microsoft .fa-3x .mobile{
+    display: none;
 }
 
 /* Pop Up */
@@ -292,15 +305,6 @@ margin: 15px 0 7px;
     display: none;
 }
 
-.bounce-1 {
-    animation-name: bounce-1;
-    animation-timing-function: linear;
-}
-@keyframes bounce-1 {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-30px); }
-    100% { transform: translateY(0); }
-}
 
 .poke-name{
     font-size: 80px;
@@ -315,6 +319,11 @@ margin: 15px 0 7px;
     font-family: 'Lato', sans-serif;
     color: white;
     margin: 0 0 10px 0;
+}
+
+.primary-icon{
+    width: 80px;
+    height: 80px;
 }
 
 .attributes{

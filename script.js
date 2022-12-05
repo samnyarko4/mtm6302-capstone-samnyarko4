@@ -17,6 +17,27 @@ const colors = {
     normal:'#A8A77A'
 };
 
+
+const TypeIcons = {
+    normal: 'NormalIcon.svg',
+    fire: 'FireIcon.svg',
+    electric: 'ElectricIcon.svg',
+    grass: 'grasstype-removebg-preview.png',
+    Ice: 'IceIcon.svg',
+    Fighting: 'FightingIcon.svg',
+    Poison: 'PoisonIcon.svg',
+    Ground: 'GroundIcon.svg',
+    Flying: 'FlyingIcon.svg',
+    Bug: 'BugIcon.svg',
+    Ghost: 'GhostIcon.svg',
+    Dragon: 'DragonIcon.svg',
+    Dark: 'DarkIcon.svg',
+    Fairy: 'FairyIcon.svg'
+};
+
+
+const caughtt = '#3F3F3F'
+
 const main_types = Object.keys(colors);
 
 const $main = document.getElementById('main')
@@ -58,6 +79,16 @@ const displayPopup = (pokemon) => {
     const poke_types = pokemon.types.map(el => el.type.name);
 
     const type = main_types.find(type => poke_types.indexOf(type) > -1);
+
+    const typetwo = main_types.find(type => poke_types.indexOf(type) > 0);
+
+    const ability = pokemon.abilities.map(ability=> ability.ability.name[0].toUpperCase()+ability.ability.name.slice(1)).join(", ");
+
+
+
+    const icon1 = TypeIcons[type];
+    const icon2 = TypeIcons[typetwo]
+
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
@@ -115,7 +146,7 @@ const displayPopup = (pokemon) => {
 
         <!-- Pokemon information -->
 <div class="pokemon-full">
-        <img  id="pokemon-img" class="pokemon-img bounce-1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"> >
+        <img  id="pokemon-img" class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif"> >
         <div class="poke-info">
             <div class="leftside">
                 
@@ -135,7 +166,7 @@ const displayPopup = (pokemon) => {
                         </tr>
                         <tr>
                             <td>Abilities:</td>
-                            <td>${pokemon.abilities}</td>
+                            <td>${ability}</td>
                         </tr>
                     </table>
                 </div>
@@ -143,7 +174,7 @@ const displayPopup = (pokemon) => {
         </div>
         <div class="types">
             <h5>Type</h5>
-            <p>${type}</p>
+            <img class="primary-icon" src="${icon1}" alt="">
         </div>
 
         <div class="rightside">
@@ -156,7 +187,7 @@ const displayPopup = (pokemon) => {
                 HP
             </h6>
             <p class="stats-number">
-                45
+                ${pokemon.hp}
             </p>
             <h6 class="stat-title">
                 Attack
@@ -213,12 +244,13 @@ popbg.style.backgroundColor = color
 
 const $leftarrow = document.getElementsByClassName('fa-chevron-left')
     
-$leftarrow.addEventListener('click', function (){
-    for(let i=0; i < $leftarrow.length; i++){
-        console.log('hello');
+popbg.addEventListener('click', function (e){
+    if (e.target.classList.contains('fa-chevron-left')){
+        console.log();
     }
-   })
-};
+}
+)}
+;
 
 
 const createPokemonCard = (pokemon) => {
@@ -233,7 +265,11 @@ const createPokemonCard = (pokemon) => {
 
     const color = colors[type];
 
-    pokemonEl.style.backgroundColor = color
+
+    
+ 
+
+
 
     
 
@@ -243,7 +279,7 @@ const createPokemonCard = (pokemon) => {
     `
     <div id="card">
     <button id="card-btn${pokemon.id}" onclick="selectPokemon(${pokemon.id})">
-    <div class="img-container">
+    <div class="img-container" id="img-container">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
  </div>
  <div
@@ -262,20 +298,25 @@ const createPokemonCard = (pokemon) => {
 
  pokemonEl.innerHTML = pokemonInnerHTML
 
+ pokemonEl.style.borderColor = color
  
- 
+
 
 
  poke_container.appendChild(pokemonEl);
 
- pokemonEl.addEventListener('click', function (e) {
-    if (e.target.classList.contains('caught')){
-        console.log('hello')
-        
-    }
- })
 
- 
+   //CATCH POKEMON BUTTON
+
+   pokemonEl.addEventListener('click', function (e) {
+    const $uncatch = document.getElementsByClassName('caught')
+    if (e.target.classList.contains('caught')){
+        pokemonEl.style.backgroundColor = color
+   
+        $uncatch.classList.add('uncatch')
+    }
+   })
+
 };
 
 
@@ -296,7 +337,7 @@ $load_more.addEventListener('click', function(){
         createPokemonCard(pokemon)
     }
     
-    
+  
     
     fetchPokemons();
     
@@ -308,20 +349,3 @@ function myFunction() {
     document.getElementById("square").classList.toggle("show");
     document.getElementById("pokemon-img").classList.toggle("pokeimg-hide");
   };
-
-
-
-
-
-  function catchPokemon(){
-    const $button = document.getElementsByClassName('status');
-
-    $button.addEventListener('click', function(){
-      for(let i=0; i < button.length; i++){
-          console.log('hello');
-      }
-      catchPokemon();
-    });
-
-    
-}
