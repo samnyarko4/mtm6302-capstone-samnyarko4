@@ -1,5 +1,6 @@
 const poke_container = document.getElementById('poke-container')
-let pokemon_count = 150
+let pokemon_count = 1
+//POKEMON TYPE COLORS
 const colors = {
     fire: '#EE8130',
     grass: '#7AC74C',
@@ -17,22 +18,23 @@ const colors = {
     normal:'#A8A77A'
 };
 
-
+//ICON IMAGES
 const TypeIcons = {
-    normal: 'NormalIcon.svg',
-    fire: 'FireIcon.svg',
-    electric: 'ElectricIcon.svg',
-    grass: 'grasstype-removebg-preview.png',
-    Ice: 'IceIcon.svg',
-    Fighting: 'FightingIcon.svg',
-    Poison: 'PoisonIcon.svg',
-    Ground: 'GroundIcon.svg',
-    Flying: 'FlyingIcon.svg',
-    Bug: 'BugIcon.svg',
-    Ghost: 'GhostIcon.svg',
-    Dragon: 'DragonIcon.svg',
-    Dark: 'DarkIcon.svg',
-    Fairy: 'FairyIcon.svg'
+    normal: '/images/NormalIcon.svg',
+    fire: '/images/FireIcon.svg',
+    water:'/images/WaterIcon.svg',
+    electric: '/images/ElectricIcon.svg',
+    grass: '/images/GrassIcon.svg',
+    ice: '/images/IceIcon.svg',
+    fighting: '/images/FightingIcon.svg',
+    poison: '/images/PoisonIcon.svg',
+    ground: '/images/GroundIcon.svg',
+    flying: '/images/FlyingIcon.svg',
+    bug: '/images/BugIcon.svg',
+    ghost: '/images/GhostIcon.svg',
+    dragon: '/images/DragonIcon.svg',
+    dark: '/images/DarkIcon.svg',
+    fairy: '/images/FairyIcon.svg'
 };
 
 
@@ -74,7 +76,7 @@ const selectPokemon = async (id) =>{
 }
 
 
-
+//POKEMON POP UP CREATION
 const displayPopup = (pokemon) => {
     const poke_types = pokemon.types.map(el => el.type.name);
 
@@ -152,7 +154,7 @@ const displayPopup = (pokemon) => {
                 
                 <p class="num-id">#${pokemon.id.toString().padStart(3, '0')}</p>
                 <h3 class="poke-name">${name}</h3>
-                <p class="full-type">${type}</p>
+                <p class="full-type">${type} ${typetwo}</p>
                 
                 <div class="attributes">
                     <table>
@@ -175,6 +177,7 @@ const displayPopup = (pokemon) => {
         <div class="types">
             <h5>Type</h5>
             <img class="primary-icon" src="${icon1}" alt="">
+            <img class="primary-icon" src="${icon2}">
         </div>
 
         <div class="rightside">
@@ -227,6 +230,8 @@ $close.addEventListener('click', function (){
 
     $main.classList.remove('hide');
 
+    loadMore();
+
 });
 
 
@@ -252,7 +257,7 @@ popbg.addEventListener('click', function (e){
 )}
 ;
 
-
+//POKEMON CARD CREATION
 const createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div')
     pokemonEl.classList.add('pokemon')
@@ -265,11 +270,11 @@ const createPokemonCard = (pokemon) => {
 
     const color = colors[type];
 
-
+    const typethree = document.getElementById('typethree')
     
  
 
-
+  
 
     
 
@@ -286,7 +291,7 @@ const createPokemonCard = (pokemon) => {
  class="info">
      <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
      <h3 class="name">${name}</h3>
-     <small class="type">Type: <span>${type}</span></small>
+     <small class="type" > <span id="typethree">${type}</span></small>
      </div> 
      </button>
      <div class="status">
@@ -300,8 +305,7 @@ const createPokemonCard = (pokemon) => {
 
  pokemonEl.style.borderColor = color
  
-
-
+ 
 
  poke_container.appendChild(pokemonEl);
 
@@ -309,24 +313,34 @@ const createPokemonCard = (pokemon) => {
    //CATCH POKEMON BUTTON
 
    pokemonEl.addEventListener('click', function (e) {
-    const $uncatch = document.getElementsByClassName('caught')
+ 
     if (e.target.classList.contains('caught')){
         pokemonEl.style.backgroundColor = color
+
    
         $uncatch.classList.add('uncatch')
     }
    })
+
+
 
 };
 
 
 
 
+
+
+
+//LOAD MORE POKEMON BUTTON
+function loadMore(){
 const $load_more = document.getElementById('load-more')
 $load_more.addEventListener('click', function(){
+    pokemon_count+=20
     const fetchPokemons = async () => {
-        for(let i = 21; i<=40; i++){
-            await getPokemon(i);
+        
+        for(let r = pokemon_count; r<pokemon_count +20; r++){
+            await getPokemon(r);
         }
     }
     
@@ -341,11 +355,14 @@ $load_more.addEventListener('click', function(){
     
     fetchPokemons();
     
-    
+    loadMore();
 });
+}
 
 
+//Pop up MINI POKE MENU
 function myFunction() {
     document.getElementById("square").classList.toggle("show");
     document.getElementById("pokemon-img").classList.toggle("pokeimg-hide");
   };
+
