@@ -43,12 +43,18 @@ background-position:center;
     box-shadow: 0 0 10px 0 #000 inset;
 }
 
+.pokemon:hover{
+    margin-top: 0;
+    margin-bottom: auto;
+}
+
+
 .pokemon .img-container{
     background-color: none;
     width: 120px;
     height: 120px;
     text-align: center;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Monda', Sans-Serif;
 }
 
 .pokemon .img-container img {
@@ -62,23 +68,31 @@ background-position:center;
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 0.9em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Monda', Sans-Serif;
 }
 
 .pokemon .info .name{
-margin: 15px 0 7px;
+margin: 15px 10px 10px 7px;
 }
 
 .type{
     padding: 5px;
-    border-radius: 15px 15px;
+    border-radius: 5px ;
     text-transform: uppercase;
     font-weight: bolder;
+    padding: 5px 10px 5px 10px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 14px;
 }
 
+
+
 #card button{
+    height: fit-content;
     background: rgba( 0, 0, 0, 0.15 );
     border: none;
+    padding-bottom: 10px;
     
 }
 
@@ -145,10 +159,6 @@ margin: 15px 0 7px;
   transform: translateY(-2px);
 }
 
-.button-30:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
-  transform: translateY(2px);
-}
 
 .fa-solid .fa-xmark .fa-4x .mobile{
     display: none;
@@ -271,7 +281,7 @@ margin: 15px 0 7px;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
     grid-template-areas: "info picture"
-                         ". statsgrid";
+                         "types statsgrid";
     grid-area: stats;
 }
 
@@ -287,12 +297,12 @@ margin: 15px 0 7px;
     font-size: 60px;
     color: white;
     font-weight: 600;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Monda', Sans-Serif;
     
 }
 .num-id{
     font-size: 250px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Julius Sans One', Sans-Serif;
     font-weight:900 ;
     font-style: italic;
     color: rgba(255, 255, 255, 0.5);
@@ -301,7 +311,7 @@ margin: 15px 0 7px;
 
 .pokemon-img {
     margin: auto;
-    height: 500px;
+    height: 300px;
     grid-area: picture;
     animation-duration: 1s;
     animation-iteration-count: infinite;
@@ -315,7 +325,8 @@ margin: 15px 0 7px;
 
 .poke-name{
     font-size: 80px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Monda', Sans-Serif;
+    text-transform: uppercase;
     font-weight: 900;
     color: white;
     margin: 0;
@@ -323,7 +334,7 @@ margin: 15px 0 7px;
 
 .full-type{
     font-size: 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Julius Sans One', Sans-Serif;
     color: white;
     margin: 0 0 10px 0;
 }
@@ -336,46 +347,60 @@ margin: 15px 0 7px;
 .attributes{
     margin: auto;
     color: white;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Julius Sans One', Sans-Serif;
+    line-height: 25px;
     font-weight: 700;
+    backdrop-filter: blur(14px);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 5px;
 }
 .attributes tr td{
     padding: 0px 150px 5px 0px;
 }
 .rightside{
     grid-area: statsgrid;
+    width: 420px;
     
 }
 .types{
-    margin-left: 100px;
+    grid-area: types;
+    
 }
 
 .types h5{
-    margin-top: 230px;
+    margin-left: 25px;
+    margin-top: 30rem;
     margin-bottom: 25px;
     font-size: 45px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 900;
+    text-transform: uppercase;
+    font-family: 'Monda', Sans-Serif;
+    font-weight: bold;
+    letter-spacing: 5px;
     color: white;
 }
 
-.typesymbol{
-    height: 100px;
+.types img{
+    
+    margin-left: 0px;
 }
 
 .attribute-chart{
+    backdrop-filter:blur(14px);
+    background-color:rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 400px;
+    column-gap: 900px;
+    
 }
 .stat-title{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Monda', Sans-Serif;
     color: white;
     font-size: 25px;
     margin: 15px;
 }
 .stats-number{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Monda', Sans-Serif;
     color: white;
     font-size: 25px;
     margin: 15px;
@@ -412,6 +437,11 @@ margin: 15px 0 7px;
         padding: 0px 90px 5px 0px;
     }
 
+    .pokemon:hover{
+        margin-top: 0;
+        margin-bottom: auto;
+    }
+
     .pokemon-img {
         height: 400px;
     }
@@ -421,17 +451,17 @@ margin: 15px 0 7px;
     }
 
     .types h5{
-        margin-top: 100px;
+        margin-top: 140px;
 
     }
 
     .rightside h4{
         font-size: 40px;
-        margin: 70px 0px 10px 0px;
+        margin: 130px 0px 10px 0px;
     }
 
     .attribute-chart{
-        column-gap: 150px;
+        column-gap: 250px;
     }
 
     .stat-title{
@@ -476,6 +506,15 @@ margin: 15px 0 7px;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .pokemon{
+        transition: none;
+    }
+
+    .pokemon:hover{
+        margin-top: auto;
+        margin-bottom: auto;
     }
 
     .pokemon-full{

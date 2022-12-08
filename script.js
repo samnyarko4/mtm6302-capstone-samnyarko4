@@ -87,7 +87,6 @@ const displayPopup = (pokemon) => {
     const ability = pokemon.abilities.map(ability=> ability.ability.name[0].toUpperCase()+ability.ability.name.slice(1)).join(", ");
 
 
-
     const icon1 = TypeIcons[type];
     const icon2 = TypeIcons[typetwo]
 
@@ -154,7 +153,7 @@ const displayPopup = (pokemon) => {
                 
                 <p class="num-id">#${pokemon.id.toString().padStart(3, '0')}</p>
                 <h3 class="poke-name">${name}</h3>
-                <p class="full-type">${type} ${typetwo}</p>
+                <p class="full-type">${type}</p>
                 
                 <div class="attributes">
                     <table>
@@ -177,7 +176,7 @@ const displayPopup = (pokemon) => {
         <div class="types">
             <h5>Type</h5>
             <img class="primary-icon" src="${icon1}" alt="">
-            <img class="primary-icon" src="${icon2}">
+            <img class="primary-icon" src="${icon2}" alt="">
         </div>
 
         <div class="rightside">
@@ -190,25 +189,25 @@ const displayPopup = (pokemon) => {
                 HP
             </h6>
             <p class="stats-number">
-                ${pokemon.hp}
+            ${pokemon.stats[0].base_stat}
             </p>
             <h6 class="stat-title">
                 Attack
             </h6>
             <p class="stats-number">
-                49
+            ${pokemon.stats[1].base_stat}
             </p>
             <h6 class="stat-title">
                 Defence
             </h6>
             <p class="stats-number">
-                49
+            ${pokemon.stats[2].base_stat}
             </p>
             <h6 class="stat-title">
                 Speed
             </h6>
             <p class="stats-number">
-                45
+            ${pokemon.stats[3].base_stat}
             </p>
             </div>
         </div>
@@ -230,7 +229,7 @@ $close.addEventListener('click', function (){
 
     $main.classList.remove('hide');
 
-    loadMore();
+
 
 });
 
@@ -241,21 +240,28 @@ const popbg = document.getElementById('pokeBg')
 
 
 const color = colors[type];
+let gradient = `linear-gradient(to top, black,${color})`
 
-popbg.style.backgroundColor = color
+popbg.style.background = gradient
+
+
 
 
 
 
 const $leftarrow = document.getElementsByClassName('fa-chevron-left')
-    
-popbg.addEventListener('click', function (e){
-    if (e.target.classList.contains('fa-chevron-left')){
-        console.log();
+   function previousPoke(){ 
+popbg.addEventListener('click', function (e) { 
+    if (e.target.classList.contains('fa-chevron-left')) { 
+        console.log('hello');
     }
-}
-)}
-;
+    })
+    
+    }
+    previousPoke();
+};
+
+
 
 //POKEMON CARD CREATION
 const createPokemonCard = (pokemon) => {
@@ -269,15 +275,7 @@ const createPokemonCard = (pokemon) => {
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
     const color = colors[type];
-
-    const typethree = document.getElementById('typethree')
     
- 
-
-  
-
-    
-
     
 
     const pokemonInnerHTML = 
@@ -291,7 +289,7 @@ const createPokemonCard = (pokemon) => {
  class="info">
      <span class="number">#${pokemon.id.toString().padStart(3, '0')}</span>
      <h3 class="name">${name}</h3>
-     <small class="type" > <span id="typethree">${type}</span></small>
+     <small class="type" id="typeone" style="background-color:${color};"> <span id="typethree" >${type}</span></small>
      </div> 
      </button>
      <div class="status">
@@ -304,6 +302,8 @@ const createPokemonCard = (pokemon) => {
  pokemonEl.innerHTML = pokemonInnerHTML
 
  pokemonEl.style.borderColor = color
+
+ 
  
  
 
@@ -312,28 +312,44 @@ const createPokemonCard = (pokemon) => {
 
    //CATCH POKEMON BUTTON
 
-   pokemonEl.addEventListener('click', function (e) {
+  // const uncatch = document.getElementsByClassName('caught')
+   // let uncatchbtn = Array.from(uncatch)
+
+ //  pokemonEl.addEventListener('click', function (e) {
  
-    if (e.target.classList.contains('caught')){
-        pokemonEl.style.backgroundColor = color
+  //  if (e.target.classList.contains('caught')){
+      //  pokemonEl.style.backgroundColor = color;
 
+        
+ //       uncatchbtn.classList.add('uncatch')
+  //  }
+ //  })
+
+ //  pokemonEl.addEventListener('mouseover', function (e) {
+  //  if (e.target.classList.contains('caught')){
+  //      uncatchbtn.forEach((element) => {
+
+ //       uncatchbtn.style.backgroundColor = color
+  //  })
+  //  }
+ //  })
    
-        $uncatch.classList.add('uncatch')
-    }
-   })
 
-
+  
 
 };
 
+let typeone = document.querySelectorAll('.type')
+for (let i = 0; i < typeone.length; i++) {
+typeone.style.backgroundColor = colors
+let element = typeone[1];
 
-
-
-
-
+// Set the background color of the element
+element.style.backgroundColor = "red";
+}
 
 //LOAD MORE POKEMON BUTTON
-function loadMore(){
+
 const $load_more = document.getElementById('load-more')
 $load_more.addEventListener('click', function(){
     pokemon_count+=20
@@ -355,9 +371,9 @@ $load_more.addEventListener('click', function(){
     
     fetchPokemons();
     
-    loadMore();
 });
-}
+
+
 
 
 //Pop up MINI POKE MENU
