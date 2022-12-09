@@ -336,6 +336,10 @@ pokemonEl.addEventListener('click', function (e) {
  }
   })
 
+
+
+  
+
 };
 
 let typeone = document.querySelectorAll('.type')
@@ -377,6 +381,7 @@ $load_more.addEventListener('click', function(){
 
 //Pop up MINI POKE MENU
 function myFunction() {
+
     const fetchPokemons = async () => {
         for(let i = 1; i<=20; i++){
             await getPokemon(i);
@@ -390,7 +395,9 @@ function myFunction() {
         createPokemonCard(pokemon)
     }
     
-    
+    const $square = document.getElementById("square") 
+
+    $square.innerHTML = pokemonEl.innerHTML
     
     fetchPokemons();
     document.getElementById("square").classList.toggle("show");
