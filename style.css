@@ -32,7 +32,7 @@ background-position:center;
 
 
 .pokemon{
-    background-color: #3F3F3F;
+    background:linear-gradient(to bottom, rgb(43, 42, 42), rgb(27, 27, 27));
     color: whitesmoke;
     border-radius: 10px;
     box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
@@ -110,8 +110,8 @@ margin: 15px 10px 10px 7px;
 
 .status #caught:hover{
     background:  rgba( 0, 0, 0, 0.15 );
-    box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
-    border: 3px solid grey;
+    box-shadow: 0 0 10px 0 var(--custom_color) inset, 0 0 20px 2px var(--custom_color);
+    border: 3px solid var(--custom_color);
 }
 
 
@@ -252,6 +252,15 @@ margin: 15px 10px 10px 7px;
 .tablet{
     display: none;
 }
+ 
+/*mobile close and mini menu display*/
+.fa-brands.fa-microsoft.fa-3x.mobile{
+    display:none;
+}
+
+.fa-solid.fa-xmark.fa-4x.mobile{
+    display: none;
+}
 
 .mobile{
     display: none;
@@ -345,22 +354,26 @@ margin: 15px 10px 10px 7px;
 }
 
 .attributes{
-    margin: auto;
     color: white;
     font-family: 'Julius Sans One', Sans-Serif;
+    row-gap: 20px;
     line-height: 25px;
     font-weight: 700;
     backdrop-filter: blur(14px);
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     border-radius: 5px;
+    width:530px;
+
 }
+
 .attributes tr td{
-    padding: 0px 150px 5px 0px;
+    padding-right: 80px;
 }
+
 .rightside{
     grid-area: statsgrid;
-    width: 420px;
+    width: 520px;
     
 }
 .types{
@@ -370,10 +383,9 @@ margin: 15px 10px 10px 7px;
 
 .types h5{
     margin-left: 25px;
-    margin-top: 30rem;
+    margin-top: 20rem;
     margin-bottom: 25px;
     font-size: 45px;
-    text-transform: uppercase;
     font-family: 'Monda', Sans-Serif;
     font-weight: bold;
     letter-spacing: 5px;
@@ -387,12 +399,99 @@ margin: 15px 10px 10px 7px;
 
 .attribute-chart{
     backdrop-filter:blur(14px);
-    background-color:rgba(0, 0, 0, 0.2);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 900px;
+    display:grid ;
+    grid-template-columns: 15% 70% 15% ;
+    row-gap: 25px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    grid-template-areas:"hp hpbar hpnum"
+                        "att attbar attnum"
+                        "def defbar defnum"
+                        "spd spdbar spdnum" ;
+}
+
+.stat-title.hp{
+    grid-area: hp ;
     
 }
+
+.hpbar{
+    position: relative;
+    top: 27px;
+    left: 45px;
+    grid-area: hpbar;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    box-shadow: 35px 35px 68px 0px rgba(8, 8, 8, 0.5), inset -12px -12px 16px 0px rgba(8, 8, 8, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.stats-number.hp{
+    grid-area: hpnum;
+} 
+
+
+
+.stat-title.att{
+    grid-area: att ;
+}
+
+.attbar{
+    position: relative;
+    top: 27px;
+    left: 45px;
+    grid-area: attbar;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    box-shadow: 35px 35px 68px 0px rgba(8, 8, 8, 0.5), inset -12px -12px 16px 0px rgba(8, 8, 8, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.stats-number.att{
+    grid-area: attnum;
+} 
+
+
+
+.stat-title.def{
+    grid-area: def ;
+}
+
+.defbar{
+    position: relative;
+    top: 27px;
+    left: 45px;
+    grid-area: defbar;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    box-shadow: 35px 35px 68px 0px rgba(8, 8, 8, 0.5), inset -12px -12px 16px 0px rgba(8, 8, 8, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.stats-number.def{
+    grid-area: defnum;
+}
+
+
+.stat-title.spd{
+    grid-area: spd ;
+}
+
+.spdbar{
+    position: relative;
+    top: 27px;
+    left: 45px;
+    grid-area: spdbar;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    box-shadow: 35px 35px 68px 0px rgba(8, 8, 8, 0.5), inset -12px -12px 16px 0px rgba(8, 8, 8, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.stats-number.spd{
+    grid-area: spdnum;
+}
+
+
+
 .stat-title{
     font-family: 'Monda', Sans-Serif;
     color: white;
@@ -433,8 +532,15 @@ margin: 15px 10px 10px 7px;
         font-size: 20px;
     }
 
+    .attributes{
+        width:300px;
+    }
+
     .attributes tr td{
-        padding: 0px 90px 5px 0px;
+        padding: 0px 80px 5px 0px;
+    }
+    .attributes table{
+        padding-top: .5rem;
     }
 
     .pokemon:hover{
@@ -443,7 +549,7 @@ margin: 15px 10px 10px 7px;
     }
 
     .pokemon-img {
-        height: 400px;
+        height: 300px;
     }
 
     .types{
@@ -461,7 +567,7 @@ margin: 15px 10px 10px 7px;
     }
 
     .attribute-chart{
-        column-gap: 250px;
+        width: 350px;
     }
 
     .stat-title{
@@ -493,12 +599,20 @@ margin: 15px 10px 10px 7px;
         height: 50px;
     }
 
-    .fa-xmark .fa-6x .desktop{
+    .fa-xmark.fa-6x.desktop{
         display: none;
     }
 
-    .fa-microsoft .fa-4x .desktop{
+    .fa-solid.fa-xmark.fa-4x.mobile{
+        display: block;
+    }
+
+    .fa-microsoft.fa-4x.desktop{
         display: none;
+    }
+
+    .fa-brands.fa-microsoft.fa-3x.mobile{
+        display: block;
     }
     
     .logo2{
@@ -543,6 +657,11 @@ margin: 15px 10px 10px 7px;
 
     .full-type{
         font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .attributes{
+        width: 350px;
     }
 
     .attributes tr td{
@@ -550,7 +669,10 @@ margin: 15px 10px 10px 7px;
     }
 
     .pokemon-img {
-        height: 250px;
+        position: relative;
+        top: -55px;
+        left: 10px;
+        height: 150px;
     }
     .types{
         margin-left: 25px;
@@ -559,30 +681,33 @@ margin: 15px 10px 10px 7px;
 
     .types h5{
         font-size: 25px;
-        margin-top: 0px;
+        margin-top: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
 
     }
 
-    .typesymbol{
+    .typesymbol img{
         height: 80px;
-        
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;      
     }
 
-
+    .rightside{
+        width: auto;
+    }
 
     .rightside h4{
         font-size: 30px;
         margin: 70px 0px 10px 0px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
+        text-align: center;
     }
 
     .attribute-chart{
-        column-gap: 150px;
+        width: 350px;
     }
 
     .stat-title{

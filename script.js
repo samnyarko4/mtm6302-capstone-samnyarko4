@@ -38,7 +38,6 @@ const TypeIcons = {
 };
 
 
-const caughtt = '#3F3F3F'
 
 const main_types = Object.keys(colors);
 
@@ -91,9 +90,19 @@ const displayPopup = (pokemon) => {
     const icon2 = TypeIcons[typetwo]
 
 
+    const spdbar = pokemon.stats[3].base_stat * 2
+
+    const defbar = pokemon.stats[2].base_stat * 2
+
+    const attbar = pokemon.stats[1].base_stat * 2
+
+    const hpbar = pokemon.stats[0].base_stat * 2
+    
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
-
+    const $leftarrow = document.getElementsByClassName('fa-chevron-left')
+  
+  
     const  htmlString = `
     <div id="pokeBg" class="popup">
     <div class="container">
@@ -175,38 +184,50 @@ const displayPopup = (pokemon) => {
         </div>
         <div class="types">
             <h5>Type</h5>
+            <div class="typesymbol">
             <img class="primary-icon" src="${icon1}" alt="">
-            <img class="primary-icon" src="${icon2}" alt="">
-        </div>
+            <img class="primary-icon" src="${icon2}" alt=" ">
+            </div>
+            </div>
 
         <div class="rightside">
                 
             <h4>
                 Stats
             </h4>
+
             <div class="attribute-chart">
-            <h6 class="stat-title">
+
+            <h5 class="stat-title hp">
                 HP
-            </h6>
-            <p class="stats-number">
+            </h5>
+		<span class="hpbar" style="height:25px; width: ${hpbar}px;"> </span>
+            <p class="stats-number hp">
             ${pokemon.stats[0].base_stat}
             </p>
-            <h6 class="stat-title">
+
+            <h5 class="stat-title att">
                 Attack
-            </h6>
-            <p class="stats-number">
+            </h5>
+
+		<span class="attbar" style="height:25px; width: ${attbar}px;"></span>
+            <p class="stats-number att">
             ${pokemon.stats[1].base_stat}
             </p>
-            <h6 class="stat-title">
+
+            <h5 class="stat-title def">
                 Defence
-            </h6>
-            <p class="stats-number">
+            </h5>
+		<span class="defbar" style="height:25px; width: ${defbar}px;"></span>
+            <p class="stats-number def">
             ${pokemon.stats[2].base_stat}
             </p>
-            <h6 class="stat-title">
+
+            <h5 class="stat-title spd">
                 Speed
-            </h6>
-            <p class="stats-number">
+            </h5>
+		<span class="spdbar" style="height:25px; width: ${spdbar}px;"></span>
+            <p class="stats-number spd">
             ${pokemon.stats[3].base_stat}
             </p>
             </div>
@@ -216,8 +237,20 @@ const displayPopup = (pokemon) => {
 </div>
     `
     $main.innerHTML = htmlString + $main.innerHTML ;
- 
-    
+
+
+
+    function previousPoke(){
+
+    popbg.addEventListener('click', function (e) { 
+    if (e.target.classList.contains('fa-chevron-left')) { 
+        console.log('hello');
+        [name + 1]
+
+    }
+    })
+    }
+
     $main.classList.add('hide');
 
 
@@ -228,15 +261,10 @@ $close.addEventListener('click', function (){
     popup.parentElement.removeChild(popup);
 
     $main.classList.remove('hide');
-
-
-
 });
 
 
-
 const popbg = document.getElementById('pokeBg')
-
 
 
 const color = colors[type];
@@ -246,18 +274,6 @@ popbg.style.background = gradient
 
 
 
-
-
-
-const $leftarrow = document.getElementsByClassName('fa-chevron-left')
-   function previousPoke(){ 
-popbg.addEventListener('click', function (e) { 
-    if (e.target.classList.contains('fa-chevron-left')) { 
-        console.log('hello');
-    }
-    })
-    
-    }
     previousPoke();
 };
 
@@ -293,7 +309,7 @@ const createPokemonCard = (pokemon) => {
      </div> 
      </button>
      <div class="status">
-     <button class="caught" id="caught">Caught</button>
+     <button class="caught" id="caught" style="--custom_color: ${color}">Caught</button>
      </div>
      `
  
@@ -312,30 +328,13 @@ const createPokemonCard = (pokemon) => {
 
    //CATCH POKEMON BUTTON
 
-  // const uncatch = document.getElementsByClassName('caught')
-   // let uncatchbtn = Array.from(uncatch)
+ const uncatch = document.getElementsByClassName('caught')
 
- //  pokemonEl.addEventListener('click', function (e) {
- 
-  //  if (e.target.classList.contains('caught')){
-      //  pokemonEl.style.backgroundColor = color;
-
+pokemonEl.addEventListener('click', function (e) {
+  if (e.target.classList.contains('caught')){
         
- //       uncatchbtn.classList.add('uncatch')
-  //  }
- //  })
-
- //  pokemonEl.addEventListener('mouseover', function (e) {
-  //  if (e.target.classList.contains('caught')){
-  //      uncatchbtn.forEach((element) => {
-
- //       uncatchbtn.style.backgroundColor = color
-  //  })
-  //  }
- //  })
-   
-
-  
+ }
+  })
 
 };
 
@@ -378,7 +377,24 @@ $load_more.addEventListener('click', function(){
 
 //Pop up MINI POKE MENU
 function myFunction() {
+    const fetchPokemons = async () => {
+        for(let i = 1; i<=20; i++){
+            await getPokemon(i);
+        }
+    }
+    
+    const getPokemon = async (id) => {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+        const res = await fetch(url)
+        const pokemon = await res.json()
+        createPokemonCard(pokemon)
+    }
+    
+    
+    
+    fetchPokemons();
     document.getElementById("square").classList.toggle("show");
     document.getElementById("pokemon-img").classList.toggle("pokeimg-hide");
+
   };
 
