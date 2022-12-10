@@ -64,6 +64,7 @@ background-position:center;
 
 
 .pokemon .info .number{
+    color: whitesmoke;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 5px 10px;
     border-radius: 10px;
@@ -72,6 +73,7 @@ background-position:center;
 }
 
 .pokemon .info .name{
+    color: whitesmoke   ;
 margin: 15px 10px 10px 7px;
 }
 
@@ -109,6 +111,7 @@ margin: 15px 10px 10px 7px;
 }
 
 .status #caught:hover{
+    color: var(--custom_color);
     background:  rgba( 0, 0, 0, 0.15 );
     box-shadow: 0 0 10px 0 var(--custom_color) inset, 0 0 20px 2px var(--custom_color);
     border: 3px solid var(--custom_color);
@@ -120,43 +123,24 @@ margin: 15px 10px 10px 7px;
 }
 
 #load-more button{
-  align-items: center;
-  appearance: none;
-  background-color: #FCFCFD;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #000;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
-  font-size: 18px;
-}
-
-#load-more button:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    margin-top: 10px;
+    padding:10px 40px 10px 40px;
+    font-family: cursive;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 3px solid;
+    border-radius: 5px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    border: 3px solid gray;
+    color: whitesmoke;
 }
 
 #load-more button:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  transform: translateY(-2px);
+    color: whitesmoke;
+    background:  rgba( 0, 0, 0, 0.15 );
+    box-shadow: 0 0 10px 0 whitesmoke inset, 0 0 20px 2px whitesmoke;
+    border: 3px solid whitesmoke;
 }
 
 
@@ -177,9 +161,7 @@ margin: 15px 10px 10px 7px;
     width: 100vw;
     background-color: #000;
 }
-#pokeBg{
-    overflow: hidden;
-}
+
 
 .square{
     display: none;
@@ -231,6 +213,10 @@ margin: 15px 10px 10px 7px;
     background: none;
     border: none;
     cursor: pointer;
+    color: black;
+}
+
+#close:hover{
     color: whitesmoke;
 }
 
@@ -401,7 +387,7 @@ margin: 15px 10px 10px 7px;
     backdrop-filter:blur(14px);
     display:grid ;
     grid-template-columns: 15% 70% 15% ;
-    row-gap: 25px;
+    row-gap: 15px;
     backdrop-filter: blur(14px);
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -701,7 +687,7 @@ margin: 15px 10px 10px 7px;
 
     .rightside h4{
         font-size: 30px;
-        margin: 70px 0px 10px 0px;
+        margin: 30px 0px 10px 0px;
         display: block;
         text-align: center;
     }

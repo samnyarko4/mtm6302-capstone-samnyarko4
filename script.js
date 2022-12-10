@@ -28,24 +28,21 @@ const TypeIcons = {
     ice: '/images/IceIcon.svg',
     fighting: '/images/FightingIcon.svg',
     poison: '/images/PoisonIcon.svg',
+    psychic:'/images/PsychicIcon.svg',
     ground: '/images/GroundIcon.svg',
     flying: '/images/FlyingIcon.svg',
     bug: '/images/BugIcon.svg',
     ghost: '/images/GhostIcon.svg',
     dragon: '/images/DragonIcon.svg',
     dark: '/images/DarkIcon.svg',
-    fairy: '/images/FairyIcon.svg'
+    fairy: '/images/FairyIcon.svg',
+    undefined:''
 };
-
 
 
 const main_types = Object.keys(colors);
 
 const $main = document.getElementById('main')
-
-
-
-
 
 const fetchPokemons = async () => {
     for(let i = 1; i<=20; i++){
@@ -59,8 +56,6 @@ const getPokemon = async (id) => {
     const pokemon = await res.json()
     createPokemonCard(pokemon)
 }
-
-
 
 fetchPokemons();
 
@@ -85,24 +80,19 @@ const displayPopup = (pokemon) => {
 
     const ability = pokemon.abilities.map(ability=> ability.ability.name[0].toUpperCase()+ability.ability.name.slice(1)).join(", ");
 
-
     const icon1 = TypeIcons[type];
     const icon2 = TypeIcons[typetwo]
 
-
+    //bar graph lenbth calculations
     const spdbar = pokemon.stats[3].base_stat * 2
-
     const defbar = pokemon.stats[2].base_stat * 2
-
     const attbar = pokemon.stats[1].base_stat * 2
-
     const hpbar = pokemon.stats[0].base_stat * 2
-    
-    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
-    const $leftarrow = document.getElementsByClassName('fa-chevron-left')
+
+    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   
-  
+  //pop up page template
     const  htmlString = `
     <div id="pokeBg" class="popup">
     <div class="container">
@@ -185,7 +175,7 @@ const displayPopup = (pokemon) => {
         <div class="types">
             <h5>Type</h5>
             <div class="typesymbol">
-            <img class="primary-icon" src="${icon1}" alt="">
+            <img class="primary-icon" src="${icon1}" alt=" ">
             <img class="primary-icon" src="${icon2}" alt=" ">
             </div>
             </div>
@@ -238,22 +228,18 @@ const displayPopup = (pokemon) => {
     `
     $main.innerHTML = htmlString + $main.innerHTML ;
 
-
-
     function previousPoke(){
 
     popbg.addEventListener('click', function (e) { 
     if (e.target.classList.contains('fa-chevron-left')) { 
         console.log('hello');
-        [name + 1]
-
     }
     })
-    }
+}
 
     $main.classList.add('hide');
 
-
+//close pop up
     const $close = document.getElementById('close');
 
 $close.addEventListener('click', function (){
@@ -266,13 +252,11 @@ $close.addEventListener('click', function (){
 
 const popbg = document.getElementById('pokeBg')
 
-
+//pop up background
 const color = colors[type];
 let gradient = `linear-gradient(to top, black,${color})`
 
 popbg.style.background = gradient
-
-
 
     previousPoke();
 };
@@ -287,13 +271,11 @@ const createPokemonCard = (pokemon) => {
 
     const type = main_types.find(type => poke_types.indexOf(type) > -1);
 
-   
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
-    const color = colors[type];
+    const color = colors[type];    
     
-    
-
+//Pokemon card template
     const pokemonInnerHTML = 
     `
     <div id="card">
@@ -313,48 +295,18 @@ const createPokemonCard = (pokemon) => {
      </div>
      `
  
- 
-
  pokemonEl.innerHTML = pokemonInnerHTML
 
  pokemonEl.style.borderColor = color
 
- 
- 
- 
-
  poke_container.appendChild(pokemonEl);
-
-
-   //CATCH POKEMON BUTTON
-
- const uncatch = document.getElementsByClassName('caught')
-
-pokemonEl.addEventListener('click', function (e) {
-  if (e.target.classList.contains('caught')){
-        
- }
-  })
-
-
-
-  
-
 };
-
-let typeone = document.querySelectorAll('.type')
-for (let i = 0; i < typeone.length; i++) {
-typeone.style.backgroundColor = colors
-let element = typeone[1];
-
-// Set the background color of the element
-element.style.backgroundColor = "red";
-}
 
 //LOAD MORE POKEMON BUTTON
 
 const $load_more = document.getElementById('load-more')
-$load_more.addEventListener('click', function(){
+$load_more.addEventListener('click', function(e){
+    if(e.target.classList.contains('load-more'))
     pokemon_count+=20
     const fetchPokemons = async () => {
         
@@ -368,40 +320,13 @@ $load_more.addEventListener('click', function(){
         const res = await fetch(url)
         const pokemon = await res.json()
         createPokemonCard(pokemon)
-    }
+    }  
     
-  
-    
-    fetchPokemons();
-    
+   fetchPokemons();
 });
-
-
-
 
 //Pop up MINI POKE MENU
 function myFunction() {
-
-    const fetchPokemons = async () => {
-        for(let i = 1; i<=20; i++){
-            await getPokemon(i);
-        }
-    }
-    
-    const getPokemon = async (id) => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-        const res = await fetch(url)
-        const pokemon = await res.json()
-        createPokemonCard(pokemon)
-    }
-    
-    const $square = document.getElementById("square") 
-
-    $square.innerHTML = pokemonEl.innerHTML
-    
-    fetchPokemons();
     document.getElementById("square").classList.toggle("show");
     document.getElementById("pokemon-img").classList.toggle("pokeimg-hide");
-
   };
-
